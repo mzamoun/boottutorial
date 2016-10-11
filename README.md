@@ -6,7 +6,9 @@ Now that the application is running, you can test it. You can use any REST clien
 
 First you want to see the top level service.
 
+<br>
 $ curl http://localhost:8080
+<br>
 {
   "_links" : {
     "people" : {
@@ -18,7 +20,9 @@ $ curl http://localhost:8080
 Here you get a first glimpse of what this server has to offer. There is a people link located at http://localhost:8080/people. It has some options such as ?page, ?size, and ?sort.
 
 Spring Data REST uses the HAL format for JSON output. It is flexible and offers a convenient way to supply links adjacent to the data that is served.
+<br>
 $ curl http://localhost:8080/people
+<br>
 {
   "_links" : {
     "self" : {
@@ -38,7 +42,9 @@ $ curl http://localhost:8080/people
 }
 There are currently no elements and hence no pages. Time to create a new Person!
 
+<br>
 $ curl -i -X POST -H "Content-Type:application/json" -d '{  "firstName" : "Frodo",  "lastName" : "Baggins" }' http://localhost:8080/people
+<br>
 HTTP/1.1 201 Created
 Server: Apache-Coyote/1.1
 Location: http://localhost:8080/people/1
@@ -51,7 +57,9 @@ Date: Wed, 26 Feb 2014 20:26:55 GMT
 Notice how the previous POST operation includes a Location header. This contains the URI of the newly created resource. Spring Data REST also has two methods on RepositoryRestConfiguration.setReturnBodyOnCreate(…) and setReturnBodyOnCreate(…) which you can use to configure the framework to immediately return the representation of the resource just created.
 From this you can query for all people:
 
+<br>
 $ curl http://localhost:8080/people
+<br>
 {
   "_links" : {
     "self" : {
@@ -84,7 +92,9 @@ The persons object contains a list with Frodo. Notice how it includes a self lin
 
 You can query directly for the individual record:
 
+<br>
 $ curl http://localhost:8080/people/1
+<br>
 {
   "firstName" : "Frodo",
   "lastName" : "Baggins",
@@ -99,7 +109,9 @@ In this guide, there is only one domain object. With a more complex system where
 
 Find all the custom queries:
 
+<br>
 $ curl http://localhost:8080/people/search
+<br>
 {
   "_links" : {
     "findByLastName" : {
@@ -112,7 +124,9 @@ You can see the URL for the query including the HTTP query parameter name. If yo
 
 To use the findByLastName query, do this:
 
+<br>
 $ curl http://localhost:8080/people/search/findByLastName?name=Baggins
+<br>
 {
   "_embedded" : {
     "persons" : [ {
@@ -130,8 +144,12 @@ Because you defined it to return List<Person> in the code, it will return all of
 
 You can also issue PUT, PATCH, and DELETE REST calls to either replace, update, or delete existing records.
 
+<br>
 $ curl -X PUT -H "Content-Type:application/json" -d '{ "firstName": "Bilbo", "lastName": "Baggins" }' http://localhost:8080/people/1
+<br>
+<br>
 $ curl http://localhost:8080/people/1
+<br>
 {
   "firstName" : "Bilbo",
   "lastName" : "Baggins",
@@ -141,8 +159,12 @@ $ curl http://localhost:8080/people/1
     }
   }
 }
+<br>
 $ curl -X PATCH -H "Content-Type:application/json" -d '{ "firstName": "Bilbo Jr." }' http://localhost:8080/people/1
+<br>
+<br>
 $ curl http://localhost:8080/people/1
+<br>
 {
   "firstName" : "Bilbo Jr.",
   "lastName" : "Baggins",
@@ -155,8 +177,11 @@ $ curl http://localhost:8080/people/1
 PUT replaces an entire record. Fields not supplied will be replaced with null. PATCH can be used to update a subset of items.
 You can delete records:
 
+<br>
 $ curl -X DELETE http://localhost:8080/people/1
+<br>
 $ curl http://localhost:8080/people
+<br>
 {
   "_links" : {
     "self" : {
