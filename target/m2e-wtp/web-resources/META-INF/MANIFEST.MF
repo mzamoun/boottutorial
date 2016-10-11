@@ -1,0 +1,11 @@
+Manifest-Version: 1.0
+Implementation-Title: boottutorial
+Implementation-Version: 1.0-SNAPSHOT
+Built-By: sqli
+Implementation-Vendor-Id: com.sqli
+Build-Jdk: 1.8.0_101
+Implementation-URL: http://projects.spring.io/spring-boot/boottutorial
+ /
+Created-By: Maven Integration for Eclipse
+Implementation-Vendor: Pivotal Software, Inc.
+

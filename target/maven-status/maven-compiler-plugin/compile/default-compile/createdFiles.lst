@@ -1,0 +1,3 @@
+com\sqli\Application.class
+com\sqli\repo\PersonRepository.class
+com\sqli\domain\Person.class
