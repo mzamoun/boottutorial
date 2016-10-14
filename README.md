@@ -1,5 +1,7 @@
 # boottutorial
 
+run server by runing as java application the Application.java file.
+
 Test the application
 
 Now that the application is running, you can test it. You can use any REST client you wish. The following examples use the *nix tool curl.
